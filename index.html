@@ -10,60 +10,54 @@
 
 <body class="bg-amber-50 text-gray-800">
 
-    <!-- NAVBAR -->
     <nav class="bg-amber-900 text-white fixed top-0 w-full shadow-lg z-50">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4 py-4 px-6 text-center">
+        <div class="container mx-auto flex flex-wrap justify-between items-center py-4 px-6">
+            
+            <a href="#inicio" class="font-bold text-lg">Kettu Café</a>
 
-            <a href="#inicio" class="hover:text-amber-300">
-                Inicio
-            </a>
+            <button id="menu-btn" class="block md:hidden focus:outline-none text-2xl">
+                ☰
+            </button>
 
-            <a href="#nosotros" class="hover:text-amber-300">
-                Quiénes Somos
-            </a>
+            <div id="menu-links" class="hidden w-full md:flex md:w-auto md:items-center md:space-x-6 text-center flex-col md:flex-row gap-4 mt-4 md:mt-0">
+                <a href="#inicio" class="hover:text-amber-300 py-2 md:py-0">Inicio</a>
+                <a href="#nosotros" class="hover:text-amber-300 py-2 md:py-0">Quiénes Somos</a>
+                <a href="#menu" class="hover:text-amber-300 py-2 md:py-0">Menú</a>
+                <a href="#contacto" class="hover:text-amber-300 py-2 md:py-0">Contacto</a>
 
-            <a href="#menu" class="hover:text-amber-300">
-                Menú
-            </a>
-
-            <a href="#contacto" class="hover:text-amber-300">
-                Contacto
-            </a>
-
-            <div class="relative group">
-
-                <span class="cursor-pointer hover:text-amber-300">
-                    Redes Sociales ▼
-                </span>
-
-                <div class="absolute hidden group-hover:block bg-white text-black rounded-lg shadow-lg w-40 top-full right-0">
-
-                    <a href="https://instagram.com/kettucafe/"
-                        target="_blank"
-                        class="flex items-center px-4 py-2 hover:bg-gray-100">
-                            <img src="instagram.png"
-                                alt="Instagram"
-                                class="w-5 h-5 mr-2">
-
-                            Instagram
-                    </a>
-
-                    <a href="https://maps.app.goo.gl/b2AB9hSJweGzbdss5"
-                        target="_blank"
-                        class="flex items-center px-4 py-2 hover:bg-gray-100">
-                            <img src="maps.png"
-                                alt="Instagram"
-                                class="w-5 h-5 mr-2">
-
-                            Ubicacion
-                    </a>
-
+                <div class="relative group py-2 md:py-0">
+                    <span class="cursor-pointer hover:text-amber-300">Redes Sociales ▼</span>
+                    <div class="absolute hidden group-hover:block bg-white text-black rounded-lg shadow-lg w-40 top-full md:right-0 left-1/2 md:left-auto -translate-x-1/2 md:translate-x-0 z-50">
+                        <a href="https://instagram.com/kettucafe/" target="_blank" class="flex items-center px-4 py-2 hover:bg-gray-100">
+                            <img src="instagram.png" alt="Instagram" class="w-5 h-5 mr-2"> Instagram
+                        </a>
+                        <a href="https://maps.app.goo.gl/b2AB9hSJweGzbdss5" target="_blank" class="flex items-center px-4 py-2 hover:bg-gray-100">
+                            <img src="maps.png" alt="Ubicación" class="w-5 h-5 mr-2"> Ubicación
+                        </a>
+                    </div>
                 </div>
-
             </div>
 
         </div>
     </nav>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const menuLinks = document.getElementById('menu-links');
+
+        menuBtn.addEventListener('click', () => {
+            menuLinks.classList.toggle('hidden');
+        });
+
+        // Opcional: Cierra el menú automáticamente cuando tocas un enlace
+        document.querySelectorAll('#menu-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(!menuLinks.classList.contains('hidden') && window.innerWidth < 768) {
+                    menuLinks.classList.add('hidden');
+                }
+            });
+        });
+    </script>
 
     <section id="inicio" class="h-screen flex flex-col justify-center items-center text-center px-6">
 
